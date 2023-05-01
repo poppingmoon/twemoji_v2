@@ -1,5 +1,6 @@
 # 0.5.3
-- Fixed an issue where `TwemojiText` wouldn't respect the specified `TextStyle`
+- Fixed an issue where `TwemojiText`n
+- wouldn't respect the specified `TextStyle`
 
 # 0.5.2
 - Removed 'Include specific emojis' functionality - See https://github.com/DynxstyGIT/twemoji_v2/pull/3#issuecomment-1492372253 for more info
