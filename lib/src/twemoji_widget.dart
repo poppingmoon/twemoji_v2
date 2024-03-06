@@ -12,6 +12,7 @@ class Twemoji extends StatelessWidget {
       required this.emoji,
       this.height,
       this.width,
+      this.opacity,
       this.fit,
       this.twemojiFormat = TwemojiFormat.svg,
       this.fitzpatrickTypes = FitzpatrickType.values})
@@ -23,6 +24,8 @@ class Twemoji extends StatelessWidget {
 
   /// The dimensions for this emoji.
   final double? height, width;
+
+  final double? opacity;
 
   /// How to inscribe the image into the space allocated during layout.
   /// The default varies based on the other fields. See the discussion at
@@ -63,6 +66,7 @@ class Twemoji extends StatelessWidget {
           fit: fit,
           height: width,
           width: height,
+          opacity: opacity != null ? AlwaysStoppedAnimation(opacity!) : null,
           package: 'twemoji_v2',
         );
       case TwemojiFormat.svg:
@@ -72,6 +76,12 @@ class Twemoji extends StatelessWidget {
           width: width,
           fit: fit ?? BoxFit.contain,
           package: 'twemoji_v2',
+          colorFilter: opacity != null
+              ? ColorFilter.mode(
+                  Color.fromRGBO(255, 255, 255, opacity!),
+                  BlendMode.modulate,
+                )
+              : null,
         );
       case TwemojiFormat.networkSvg:
         return SvgPicture.network(
@@ -79,6 +89,12 @@ class Twemoji extends StatelessWidget {
           height: height,
           width: width,
           fit: fit ?? BoxFit.contain,
+          colorFilter: opacity != null
+              ? ColorFilter.mode(
+                  Color.fromRGBO(255, 255, 255, opacity!),
+                  BlendMode.modulate,
+                )
+              : null,
         );
     }
   }
