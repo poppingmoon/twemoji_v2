@@ -31,8 +31,8 @@ class TwemojiText extends StatelessWidget {
   /// Allows to multiply the rendered emoji's size. Defaults to 1.
   final double emojiFontMultiplier;
 
-  /// Specifies the way the twemojis get rendered. [TwemojiFormat.png] uses the
-  /// 72x72px PNG, while [TwemojiFormat.svg] uses the corresponding SVG.
+  /// Specifies the way the twemojis get rendered.
+  /// [TwemojiFormat.svg] uses the corresponding SVG.
   final TwemojiFormat twemojiFormat;
 
   /// A list with allowed fitzpatrick types. This contains all types by default.

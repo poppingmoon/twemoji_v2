@@ -61,14 +61,6 @@ class _MyHomePageState extends State<MyHomePage>
                       ),
                     ),
                     TwemojiTextSpan(
-                      text: '$_emojis\nTwemojiFormat.png\n\n',
-                      twemojiFormat: TwemojiFormat.png,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                      ),
-                    ),
-                    TwemojiTextSpan(
                       text: '$_emojis\nTwemojiFormat.svg (x1.3)\n\n',
                       twemojiFormat: TwemojiFormat.svg,
                       emojiFontMultiplier: 1.3,

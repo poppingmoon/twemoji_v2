@@ -4,8 +4,8 @@ import 'package:twemoji_v2/twemoji_v2.dart';
 
 /// returns an image of an emoji
 ///
-/// The format of the emoji image it can be [TwemojiFormat.png]
-/// 72*72 png or [TwemojiFormat.svg] svg by default.
+/// The format of the emoji image
+/// [TwemojiFormat.svg] svg by default.
 class Twemoji extends StatelessWidget {
   const Twemoji(
       {Key? key,
@@ -32,8 +32,8 @@ class Twemoji extends StatelessWidget {
   /// [paintImage].
   final BoxFit? fit;
 
-  /// Specifies the way the twemojis get rendered. [TwemojiFormat.png] uses the
-  /// 72x72px PNG, while [TwemojiFormat.svg] uses the corresponding SVG.
+  /// Specifies the way the twemojis get rendered.
+  /// [TwemojiFormat.svg] uses the corresponding SVG.
   final TwemojiFormat twemojiFormat;
 
   /// A list with allowed fitzpatrick types. This contains all types by default.
@@ -60,15 +60,6 @@ class Twemoji extends StatelessWidget {
       }
     }
     switch (twemojiFormat) {
-      case TwemojiFormat.png:
-        return Image.asset(
-          'assets/png/$unicode.png',
-          fit: fit,
-          height: width,
-          width: height,
-          opacity: opacity != null ? AlwaysStoppedAnimation(opacity!) : null,
-          package: 'twemoji_v2',
-        );
       case TwemojiFormat.svg:
         return SvgPicture.asset(
           'assets/svg/$unicode.svg',

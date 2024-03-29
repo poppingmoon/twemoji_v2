@@ -1,7 +1,7 @@
 # twemoji_v2
 > Originally maintained by [hadi-codes](https://github.com/hadi-codes), extended to support the newest set of twemoji.
 
-[Twemoji](https://twemoji.twitter.com/) for Flutter, supports SVG and 72x72px PNG emojis
+[Twemoji](https://twemoji.twitter.com/) for Flutter, supports SVG
 
 Based on [jdecked's fork of twemoji (v14.1.2)](https://github.com/jdecked/twemoji)
 

@@ -17,8 +17,8 @@ class TwemojiTextSpan extends TextSpan {
             ..addAll(children ?? []),
         );
 
-  /// The format of the emoji image it can be [TwemojiFormat.png]
-  /// 72*72 png or [TwemojiFormat.svg] svg by default.
+  /// The format of the emoji image
+  /// [TwemojiFormat.svg] svg by default.
   final TwemojiFormat twemojiFormat;
 
   /// A list with allowed fitzpatrick types. This contains all types by default.

@@ -40,35 +40,28 @@ Future<void> main(List<String> args) async {
     exit(0);
   }
 
-  final pngAssetsDirectory = Directory('$assetsPath/png/');
   final svgAssetsDirectory = Directory('$assetsPath/svg/');
 
-  // Empty the svg/png directories so that they can be repopulated with the
+  // Empty the svg directory so that they can be repopulated with the
   // emojis specified in the client's pubspec.yaml
-  if (pngAssetsDirectory.existsSync()) {
-    pngAssetsDirectory.deleteSync(recursive: true);
-  }
   if (svgAssetsDirectory.existsSync()) {
     svgAssetsDirectory.deleteSync(recursive: true);
   }
 
-  // Recreate the directories so that the new files can be written under them.
-  pngAssetsDirectory.createSync();
+  // Recreate the directory so that the new files can be written under it.
   svgAssetsDirectory.createSync();
 
   final copyEmojisFutures = <Future<File>>[];
 
   // Iterate over characters, not code units as described here:
   // https://github.com/dart-lang/language/issues/685
-  // and write the assets corresponding to the client's emojis into the svg and
-  // png directories.
+  // and write the assets corresponding to the client's emojis into the svg
+  // directory.
   for (final char in includedEmojis.characters) {
     final unicodeStr = TwemojiUtils.toUnicode(char);
 
     if (unicodeStr.isNotEmpty) {
       copyEmojisFutures.addAll([
-        File('$allAssetsPath/png/$unicodeStr.png')
-            .copy('$assetsPath/png/$unicodeStr.png'),
         File('$allAssetsPath/svg/$unicodeStr.svg')
             .copy('$assetsPath/svg/$unicodeStr.svg'),
       ]);
