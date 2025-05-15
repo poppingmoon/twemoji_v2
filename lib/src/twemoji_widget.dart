@@ -14,6 +14,7 @@ class Twemoji extends StatelessWidget {
       this.width,
       this.opacity,
       this.fit,
+      this.alignment,
       this.twemojiFormat = TwemojiFormat.svg,
       this.fitzpatrickTypes = FitzpatrickType.values})
       : super(key: key);
@@ -31,6 +32,8 @@ class Twemoji extends StatelessWidget {
   /// The default varies based on the other fields. See the discussion at
   /// [paintImage].
   final BoxFit? fit;
+
+  final Alignment? alignment;
 
   /// Specifies the way the twemojis get rendered.
   /// [TwemojiFormat.svg] uses the corresponding SVG.
@@ -66,6 +69,7 @@ class Twemoji extends StatelessWidget {
           height: height,
           width: width,
           fit: fit ?? BoxFit.contain,
+          alignment: alignment ?? Alignment.center,
           package: 'twemoji_v2',
           colorFilter: opacity != null
               ? ColorFilter.mode(
@@ -80,6 +84,7 @@ class Twemoji extends StatelessWidget {
           height: height,
           width: width,
           fit: fit ?? BoxFit.contain,
+          alignment: alignment ?? Alignment.center,
           colorFilter: opacity != null
               ? ColorFilter.mode(
                   Color.fromRGBO(255, 255, 255, opacity!),
