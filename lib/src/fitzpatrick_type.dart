@@ -12,7 +12,7 @@ enum FitzpatrickType {
   type5,
 
   /// Fitzpatrick modifier of type 6 (black)
-  type6
+  type6,
 }
 
 extension FitzpatrickTypeExtension on FitzpatrickType {

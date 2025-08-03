@@ -10,13 +10,14 @@ Future<void> main(List<String> args) async {
   final pubspecFile = File('${Directory.current.path}/pubspec.yaml');
 
   final pubspecYamlStr = pubspecFile.readAsStringSync();
-  final pubspecYaml = loadYaml(pubspecYamlStr);
+  final pubspecYaml = loadYaml(pubspecYamlStr) as YamlMap;
 
   // The script's path is the /bin directory of the Twemoji package so to navigate
   // to the assets path we go up once for the file and a second time to navigate
   // out of the /bin directory.
-  final twemojiPackageAbsolutePath =
-      Directory(Platform.script.toFilePath()).parent.parent.path;
+  final twemojiPackageAbsolutePath = Directory(
+    Platform.script.toFilePath(),
+  ).parent.parent.path;
 
   final assetsPath = '$twemojiPackageAbsolutePath/assets';
   final allAssetsPath = '$twemojiPackageAbsolutePath/all_assets';
@@ -29,7 +30,8 @@ Future<void> main(List<String> args) async {
   // Move all assets to an all_assets backup folder.
   await copyPath(assetsPath, allAssetsPath);
 
-  final String? includedEmojis = (pubspecYaml['twemoji_v2'] ?? {})['includes'];
+  final String? includedEmojis =
+      (pubspecYaml['twemoji_v2'] as YamlMap?)?['includes'] as String?;
 
   // If there is no twemoji includes config property then all assets
   // should be included.
@@ -62,8 +64,9 @@ Future<void> main(List<String> args) async {
 
     if (unicodeStr.isNotEmpty) {
       copyEmojisFutures.addAll([
-        File('$allAssetsPath/svg/$unicodeStr.svg')
-            .copy('$assetsPath/svg/$unicodeStr.svg'),
+        File(
+          '$allAssetsPath/svg/$unicodeStr.svg',
+        ).copy('$assetsPath/svg/$unicodeStr.svg'),
       ]);
     }
   }

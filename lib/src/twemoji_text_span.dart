@@ -7,15 +7,18 @@ class TwemojiTextSpan extends TextSpan {
     required String text,
     this.twemojiFormat = TwemojiFormat.svg,
     this.fitzpatrickTypes = FitzpatrickType.values,
-    TextStyle? style,
+    super.style,
     List<TextSpan>? children,
     double emojiFontMultiplier = 1,
   }) : super(
-          style: style,
-          children: _parse(
-              style, text, twemojiFormat, fitzpatrickTypes, emojiFontMultiplier)
-            ..addAll(children ?? []),
-        );
+         children: _parse(
+           style,
+           text,
+           twemojiFormat,
+           fitzpatrickTypes,
+           emojiFontMultiplier,
+         )..addAll(children ?? []),
+       );
 
   /// The format of the emoji image
   /// [TwemojiFormat.svg] svg by default.
@@ -27,14 +30,14 @@ class TwemojiTextSpan extends TextSpan {
   final List<FitzpatrickType> fitzpatrickTypes;
 
   static List<InlineSpan> _parse(
-    TextStyle? _style,
+    TextStyle? style,
     String text,
     TwemojiFormat twemojiFormat,
     List<FitzpatrickType> fitzpatrickTypes,
     double emojiFontMultiplier,
   ) {
     final spans = <InlineSpan>[];
-    final textStyle = _style ?? const TextStyle();
+    final textStyle = style ?? const TextStyle();
 
     final emojiStyle = textStyle.copyWith(
       fontSize: (textStyle.fontSize ?? 14) * emojiFontMultiplier,
@@ -46,25 +49,24 @@ class TwemojiTextSpan extends TextSpan {
         spans.add(
           WidgetSpan(
             child: Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: emojiStyle.letterSpacing ?? 1,
-                    vertical: emojiStyle.height ?? 2),
-                child: Twemoji(
-                  emoji: emojiStr,
-                  twemojiFormat: twemojiFormat,
-                  fitzpatrickTypes: fitzpatrickTypes,
-                  height: emojiStyle.fontSize,
-                  width: emojiStyle.fontSize,
-                )),
+              padding: EdgeInsets.symmetric(
+                horizontal: emojiStyle.letterSpacing ?? 1,
+                vertical: emojiStyle.height ?? 2,
+              ),
+              child: Twemoji(
+                emoji: emojiStr,
+                twemojiFormat: twemojiFormat,
+                fitzpatrickTypes: fitzpatrickTypes,
+                height: emojiStyle.fontSize,
+                width: emojiStyle.fontSize,
+              ),
+            ),
           ),
         );
         return '';
       },
       onNonMatch: (s) {
-        spans.add(TextSpan(
-          text: s,
-          style: _style,
-        ));
+        spans.add(TextSpan(text: s, style: style));
         return '';
       },
     );

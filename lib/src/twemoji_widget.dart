@@ -7,24 +7,27 @@ import 'package:twemoji_v2/twemoji_v2.dart';
 /// The format of the emoji image
 /// [TwemojiFormat.svg] svg by default.
 class Twemoji extends StatelessWidget {
-  const Twemoji(
-      {Key? key,
-      required this.emoji,
-      this.height,
-      this.width,
-      this.opacity,
-      this.fit,
-      this.alignment,
-      this.twemojiFormat = TwemojiFormat.svg,
-      this.fitzpatrickTypes = FitzpatrickType.values})
-      : super(key: key);
+  const Twemoji({
+    super.key,
+    required this.emoji,
+    this.height,
+    this.width,
+    this.opacity,
+    this.fit,
+    this.alignment,
+    this.twemojiFormat = TwemojiFormat.svg,
+    this.fitzpatrickTypes = FitzpatrickType.values,
+  });
 
   /// The emoji as a string. When multiple emojis are passed, this will
   /// simply just display the last one.
   final String emoji;
 
-  /// The dimensions for this emoji.
-  final double? height, width;
+  /// The height for this emoji.
+  final double? height;
+
+  /// The width for this emoji.
+  final double? width;
 
   final double? opacity;
 

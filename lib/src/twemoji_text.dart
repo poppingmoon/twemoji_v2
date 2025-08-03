@@ -5,7 +5,7 @@ import 'package:twemoji_v2/twemoji_v2.dart';
 /// combination with [TwemojiTextSpan].
 class TwemojiText extends StatelessWidget {
   const TwemojiText({
-    Key? key,
+    super.key,
     required this.text,
     this.emojiFontMultiplier = 1.0,
     this.twemojiFormat = TwemojiFormat.svg,
@@ -17,13 +17,13 @@ class TwemojiText extends StatelessWidget {
     this.locale,
     this.softWrap,
     this.overflow,
-    this.textScaleFactor,
+    this.textScaler,
     this.maxLines,
     this.semanticsLabel,
     this.textWidthBasis,
     this.textHeightBehavior,
     this.selectionColor,
-  }) : super(key: key);
+  });
 
   /// The text to display.
   final String text;
@@ -68,10 +68,10 @@ class TwemojiText extends StatelessWidget {
   /// This is directly passed into the [Text.rich] widget.
   final TextOverflow? overflow;
 
-  /// The [textScaleFactor] to use.
-  /// This is identical to [MediaQueryData.textScaleFactor]
+  /// The [textScaler] to use.
+  /// This is identical to [MediaQueryData.textScaler]
   /// This is directly passed into the [Text.rich] widget.
-  final double? textScaleFactor;
+  final TextScaler? textScaler;
 
   /// The maximum amount of lines allowed.
   /// This is directly passed into the [Text.rich] widget.
@@ -95,24 +95,24 @@ class TwemojiText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Text.rich(
-        TwemojiTextSpan(
-          text: text,
-          emojiFontMultiplier: emojiFontMultiplier,
-          twemojiFormat: twemojiFormat,
-          fitzpatrickTypes: fitzpatrickTypes,
-          style: style,
-        ),
-        strutStyle: strutStyle,
-        textAlign: textAlign,
-        textDirection: textDirection,
-        locale: locale,
-        softWrap: softWrap,
-        overflow: overflow,
-        textScaleFactor: textScaleFactor,
-        maxLines: maxLines,
-        semanticsLabel: semanticsLabel,
-        textWidthBasis: textWidthBasis,
-        textHeightBehavior: textHeightBehavior,
-        selectionColor: selectionColor,
-      );
+    TwemojiTextSpan(
+      text: text,
+      emojiFontMultiplier: emojiFontMultiplier,
+      twemojiFormat: twemojiFormat,
+      fitzpatrickTypes: fitzpatrickTypes,
+      style: style,
+    ),
+    strutStyle: strutStyle,
+    textAlign: textAlign,
+    textDirection: textDirection,
+    locale: locale,
+    softWrap: softWrap,
+    overflow: overflow,
+    textScaler: textScaler,
+    maxLines: maxLines,
+    semanticsLabel: semanticsLabel,
+    textWidthBasis: textWidthBasis,
+    textHeightBehavior: textHeightBehavior,
+    selectionColor: selectionColor,
+  );
 }
