@@ -10,7 +10,7 @@ dependencies:
   characters: ^1.4.0
   flutter:
     sdk: flutter
-  flutter_svg: ^2.2.0
+  flutter_svg: ^2.2.1
   io: ^1.0.5
   path: ^1.9.1
   xml: ^6.6.1
